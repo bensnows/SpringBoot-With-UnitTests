@@ -17,14 +17,15 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>5.3.16</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <pluginManagement>
@@ -72,7 +73,8 @@
       </plugins>
     </pluginManagement>
   </build>
-<modules>  <module>admin</module>
+  <modules>
+    <module>admin</module>
     <module>core</module>
     <module>mapper</module>
     <module>service</module>
