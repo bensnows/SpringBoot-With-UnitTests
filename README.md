@@ -16,10 +16,19 @@
     1. src/test/java/service/HelloServiceTest.java
 
 
-
+## 需求單
+1. 建立專案 ＆ 建立 Hello 業務
+    1. 建立專案
+    1. 產生基礎業務架構
+    1. 開發 Controller
+    1. 開發 Service
+    1. 開發 mapper
 
 
 # Resource
+## Sample
+https://www.baeldung.com/maven-multi-module
+
 ## Build parent project
 ```sh
 mvn archetype:generate -DgroupId=com.hello -DartifactId=parent-project
