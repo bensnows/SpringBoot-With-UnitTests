@@ -53,10 +53,11 @@ git commit -m "taskmessage"
 
 
 # Resource
-## Sample
+## Parent-pom project
+### Source
 https://www.baeldung.com/maven-multi-module
 
-## Build parent project
+##$ Build parent project
 ```sh
 mvn archetype:generate -DgroupId=com.hello -DartifactId=parent-project
 ```
@@ -67,11 +68,51 @@ add packaging type to pom
     <packaging>pom</packaging>
 ```
 
-## Build subproject
+### Build subproject
 ```sh
 cd parent-project
 mvn archetype:generate -DgroupId=com.hello -DartifactId=admin
 mvn archetype:generate -DgroupId=com.hello -DartifactId=core
 mvn archetype:generate -DgroupId=com.hello -DartifactId=mapper
 mvn archetype:generate -DgroupId=com.hello -DartifactId=service
+```
+
+### Set SpringBoot project
+```pom
+#In pom
+
+
+```
+
+### Set mvn run test
+```pom
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+```
+
+### Add test dependencies
+```pom
+    	<!-- UnitTest dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 ```
