@@ -15,16 +15,15 @@ public enum Gender {
 	@JsonValue
 	private final Integer gender;
 
-	@JsonCreator
-	public static Gender parse(Integer gender) {
-
-		for (Gender value : values()) {
-			if (value.gender.equals(gender)) {
-				return value;
-			}
-		}
-		throw new RuntimeException("Parse exception, Gender 無此參數 Gender:"+gender.toString());
-	}
+//	public static Gender parse(Integer gender) {
+//
+//		for (Gender value : values()) {
+//			if (value.gender.equals(gender)) {
+//				return value;
+//			}
+//		}
+//		throw new RuntimeException("Parse exception, Gender 無此參數 Gender:"+gender.toString());
+//	}
 
 	public String toString() {
 		return gender.toString();

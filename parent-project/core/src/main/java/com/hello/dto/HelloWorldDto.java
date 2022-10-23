@@ -2,10 +2,10 @@ package com.hello.dto;
 
 import java.io.Serializable;
 
-import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-
-import com.hello.enums.Gender;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,12 +20,12 @@ public class HelloWorldDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Valid
 	@NotBlank
 	private String name;
 
-	@Valid
-	@NotBlank
-	private Gender gender;
+	@NotNull
+	@Min(1)
+	@Max(2)
+	private Integer gender;
 
 }

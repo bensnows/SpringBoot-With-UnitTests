@@ -1,5 +1,7 @@
 package com.hello.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,7 @@ public class HelloController {
 	
 	
 	@PostMapping
-	public void insert(@RequestBody HelloWorldDto helloWorldDto) {
+	public void insert(@RequestBody @Valid HelloWorldDto helloWorldDto) {
 		helloService.insertSomeThing(helloWorldDto);
 	}
 	

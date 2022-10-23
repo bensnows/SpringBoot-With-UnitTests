@@ -24,7 +24,7 @@ public class HelloWorldDtoTest {
 	@Test
 	void testDtoToString() throws JsonProcessingException {
 
-		HelloWorldDto dto = HelloWorldDto.builder().name("Peter").gender(Gender.Male).build();
+		HelloWorldDto dto = HelloWorldDto.builder().name("Peter").gender(1).build();
 
 		String result = mapper.writeValueAsString(dto);
 		assertTrue(StringUtils.contains(result, "\"gender\":1"));
@@ -36,7 +36,7 @@ public class HelloWorldDtoTest {
 		final String result = "{\"name\":\"Peter\",\"gender\":1}";
 		HelloWorldDto dto = mapper.readValue(result, HelloWorldDto.class);
 
-		assertThat(dto.getGender()).isEqualTo(Gender.Male);
+		assertThat(dto.getGender()).isEqualTo(1);
 		assertThat(dto.getName()).isEqualTo("Peter");
 	}
 
