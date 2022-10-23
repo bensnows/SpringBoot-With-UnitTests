@@ -1,5 +1,7 @@
 package com.hello.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +17,23 @@ import com.hello.dto.HelloWorldDto;
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
-	
+
 	@Autowired
 	private HelloService helloService;
-	
+
 	@GetMapping("/echo")
-	public String echoHello(){
+	public String echoHello() {
 		return "Hello app";
 	}
-	
-	
+
 	@PostMapping
 	public void insert(@RequestBody @Valid HelloWorldDto helloWorldDto) {
 		helloService.insertSomeThing(helloWorldDto);
 	}
-	
+
+	@GetMapping("/names")
+	public List<String> getNames() {
+		return helloService.getNames();
+	}
+
 }

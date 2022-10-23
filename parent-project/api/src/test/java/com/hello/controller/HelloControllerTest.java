@@ -1,12 +1,14 @@
 package com.hello.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +32,6 @@ public class HelloControllerTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-
 	@Test
 	void testEcho() {
 
@@ -52,6 +53,25 @@ public class HelloControllerTest {
 
 		assertThat(response.getStatusCodeValue()).isEqualTo(200);
 		assertThat(response.getBody()).isNull();
+	}
+
+	@Test
+	void testGetNames() throws Exception {
+		List<String> names = new ArrayList<>();
+		names.add("Peter");
+		names.add("jack");
+
+		when(service.getNames()).thenReturn(names);
+
+		URI targetUrl = UriComponentsBuilder.fromUriString("/hello/names").build().encode().toUri();
+
+		ResponseEntity<String> response = restTemplate.getForEntity(targetUrl, String.class);
+
+		assertThat(response.getStatusCodeValue()).isEqualTo(200);
+		assertThat(response.getBody()).isNotNull();
+		
+		assertTrue(response.getBody().contains(names.get(0)));
+		assertTrue(response.getBody().contains(names.get(1)));
 	}
 
 	private HttpEntity<String> buildRequest() throws Exception {
